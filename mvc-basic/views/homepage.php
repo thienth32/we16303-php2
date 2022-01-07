@@ -1,0 +1,1 @@
+<h2>Xin chào <?= $title ?></h2>

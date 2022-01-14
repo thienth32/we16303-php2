@@ -6,7 +6,6 @@ function home_index(){
     $title = "WE16303 - PHP2";
     $users = getAll();
     $posts = getAllPost();
-
     include_once "./views/homepage.php";
 }
 

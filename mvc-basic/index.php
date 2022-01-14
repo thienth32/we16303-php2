@@ -8,7 +8,8 @@ switch ($url) {
         home_index();
         break;
     case 'admin':
-        echo "Vào trang quarnt trị";
+        require_once './controllers/AdminController.php';
+        admin_index();
         break;
     default:
         echo "Đường dẫn bạn đang truy cập chưa được cho phép";

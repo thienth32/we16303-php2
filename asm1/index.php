@@ -1,5 +1,6 @@
 <?php
 
+require_once './vendor/autoload.php';
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 // $url mong muốn của người gửi request
 switch ($url) {

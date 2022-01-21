@@ -1,4 +1,5 @@
 <?php
+require_once './commons/helpers.php';
 require_once './vendor/autoload.php';
 
 use App\Controllers\SubjectController;
@@ -16,14 +17,20 @@ switch ($url) {
         $ctr->index();
         break;
     case 'mon-hoc/tao-moi':
+        $ctr = new SubjectController();
+        $ctr->addForm();
         break;
     case 'mon-hoc/luu-tao-moi':
+        $ctr = new SubjectController();
+        $ctr->saveAdd();
         break;
     case 'mon-hoc/cap-nhat':
         break;
     case 'mon-hoc/luu-cap-nhat':
         break;
     case 'mon-hoc/xoa':
+        $ctr = new SubjectController();
+        $ctr->remove();
         break;
     case 'mon-hoc/chi-tiet':
         break;

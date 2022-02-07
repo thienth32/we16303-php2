@@ -1,11 +1,17 @@
 <?php
+session_start();
 require_once './commons/helpers.php';
 require_once './vendor/autoload.php';
 
+use App\Controllers\QuizController;
 use App\Controllers\SubjectController;
 
 
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
+$_SESSION['auth'] = [
+    "name" => "Trần hữu Thiện",
+    "id" => 1
+];
 // $url mong muốn của người gửi request
 switch ($url) {
     case 'login':
@@ -35,6 +41,8 @@ switch ($url) {
     case 'mon-hoc/chi-tiet':
         break;
     case 'quiz':
+        $ctr = new QuizController();
+        $ctr->listQuizs();
         break;
     case 'quiz/tao-moi':
         break;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\SubjectController;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
 
@@ -10,6 +11,14 @@ function applyRouting($url){
     $router->get('/', function(){
         return "Hello poly";
     });
+
+    // request dạng get url: localhost/we16303-php2/asm1/subjects
+    // sẽ đc xử lý tại SubjectController->index();
+
+    $router->get('mon-hoc', [SubjectController::class, 'index']);
+    $router->get('mon-hoc/tao-moi', [SubjectController::class, 'addForm']);
+    $router->post('mon-hoc/tao-moi', [SubjectController::class, 'saveAdd']);
+
 
 
     $dispatcher = new Dispatcher($router->getData());

@@ -15,9 +15,17 @@ function applyRouting($url){
     // request dạng get url: localhost/we16303-php2/asm1/subjects
     // sẽ đc xử lý tại SubjectController->index();
 
-    $router->get('mon-hoc', [SubjectController::class, 'index']);
-    $router->get('mon-hoc/tao-moi', [SubjectController::class, 'addForm']);
-    $router->post('mon-hoc/tao-moi', [SubjectController::class, 'saveAdd']);
+    $router->group(['prefix' => 'mon-hoc'], function($router){
+        $router->get('/', [SubjectController::class, 'index']);
+        $router->get('tao-moi', [SubjectController::class, 'addForm']);
+        $router->post('tao-moi', [SubjectController::class, 'saveAdd']);
+        // tham số {}
+        // 2 loại 
+        // - tham số bắt buộc : {id}
+        // - tham số tuỳ chọn : {id}?
+        $router->get('cap-nhat/{id}/{name}?', [SubjectController::class, 'editForm']);
+    });
+    
 
 
 

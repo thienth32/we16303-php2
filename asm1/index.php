@@ -7,6 +7,7 @@ require_once './commons/routing.php';
 
 
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
+
 applyRouting($url);
 
 // $_SESSION['auth'] = [

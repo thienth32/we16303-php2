@@ -402,9 +402,9 @@ class RouteCollector implements RouteDataProviderInterface {
      * @param $route
      * @return string
      */
-    private function trim($route)
+    private function trim($route = "test")
     {
-        return trim($route, '/');
+        return trim((string) $route, '/');
     }
 
     /**

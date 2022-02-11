@@ -30,5 +30,9 @@ class SubjectController{
         header('location: ' . BASE_URL . 'mon-hoc');
         die;
     }
+
+    public function editForm($id, $name = 'someone'){
+        dd($id, $name);
+    }
 }
 ?>

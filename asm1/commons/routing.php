@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\LoginController;
 use App\Controllers\SubjectController;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
@@ -11,6 +12,17 @@ function applyRouting($url){
     $router->get('/', function(){
         return "Hello poly";
     });
+
+    $router->get('login', [LoginController::class, 'loginForm']);
+    $router->post('login', [LoginController::class, 'postLogin']);
+
+    // cập nhật thông tin một môn học
+    // mon-hoc/cap-nhat?id=1 => query string
+    // mon-hoc/1/cap-nhat => route parameter - tham số đường dẫn
+    $router->get('mon-hoc/{subjectId}/cap-nhat', 
+            [SubjectController::class, 'editForm']);
+
+
 
     // request dạng get url: localhost/we16303-php2/asm1/subjects
     // sẽ đc xử lý tại SubjectController->index();

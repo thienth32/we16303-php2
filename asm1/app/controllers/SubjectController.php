@@ -31,8 +31,8 @@ class SubjectController{
         die;
     }
 
-    public function editForm($id, $name = 'someone'){
-        dd($id, $name);
+    public function editForm($subjectId){
+        dd($subjectId);
     }
 }
 ?>

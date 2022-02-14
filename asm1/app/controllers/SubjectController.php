@@ -32,7 +32,7 @@ class SubjectController{
     }
 
     public function editForm($subjectId){
-        dd($subjectId);
+        var_dump($subjectId);die;
     }
 }
 ?>

@@ -8,6 +8,13 @@ use Phroute\Phroute\RouteCollector;
 function applyRouting($url){
     $router = new RouteCollector();
 
+    $router->filter('check-login', function(){
+        if(!isset($_SESSION['auth']) || empty($_SESSION['auth'])){
+            header('location: '. BASE_URL . 'login');
+            die;
+        }
+    });
+
     // định nghĩa url trong này
     $router->get('/', function(){
         return "Hello poly";
@@ -15,27 +22,25 @@ function applyRouting($url){
 
     $router->get('login', [LoginController::class, 'loginForm']);
     $router->post('login', [LoginController::class, 'postLogin']);
+    $router->any('logout', function (){
+        unset($_SESSION['auth']);
+        header('location: ' . BASE_URL . 'login');
+        die;
+    });
 
-    // cập nhật thông tin một môn học
-    // mon-hoc/cap-nhat?id=1 => query string
-    // mon-hoc/1/cap-nhat => route parameter - tham số đường dẫn
-    $router->get('mon-hoc/{subjectId}/cap-nhat', 
-            [SubjectController::class, 'editForm']);
-
-
-
-    // request dạng get url: localhost/we16303-php2/asm1/subjects
-    // sẽ đc xử lý tại SubjectController->index();
 
     $router->group(['prefix' => 'mon-hoc'], function($router){
-        $router->get('/', [SubjectController::class, 'index']);
+        $router->get('/', [SubjectController::class, 'index'], ['before' => 'check-login']);
         $router->get('tao-moi', [SubjectController::class, 'addForm']);
         $router->post('tao-moi', [SubjectController::class, 'saveAdd']);
+        $router->get('{subjectId}/cap-nhat', 
+            [SubjectController::class, 'editForm']);
+        $router->get('xoa/{id}', [LoginController::class, 'remove']);
         // tham số {}
         // 2 loại 
         // - tham số bắt buộc : {id}
         // - tham số tuỳ chọn : {id}?
-        $router->get('cap-nhat/{id}/{name}?', [SubjectController::class, 'editForm']);
+        // $router->get('cap-nhat/{id}/{name}?', [SubjectController::class, 'editForm']);
     });
     
 

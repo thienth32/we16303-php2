@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
-class StudentQuizDetail extends BaseModel{
-    protected $tableName = 'student_quiz_detail';
+use Illuminate\Database\Eloquent\Model;
+class StudentQuizDetail extends Model{
+    protected $table = 'student_quiz_detail';
+    public $timestamps = false;
 }
 ?>

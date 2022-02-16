@@ -364,17 +364,17 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v9.0.0",
-            "version_normalized": "9.0.0.0",
+            "version": "v9.1.0",
+            "version_normalized": "9.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "71cab985340092830627a0268baf452fdc380156"
+                "reference": "9a65ca2100cada21ab2e65032821e5d3264da008"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/71cab985340092830627a0268baf452fdc380156",
-                "reference": "71cab985340092830627a0268baf452fdc380156",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/9a65ca2100cada21ab2e65032821e5d3264da008",
+                "reference": "9a65ca2100cada21ab2e65032821e5d3264da008",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +396,7 @@
                 "illuminate/pagination": "Required to paginate the result set (^9.0).",
                 "symfony/finder": "Required to use Eloquent model factories (^6.0)."
             },
-            "time": "2022-02-08T09:38:11+00:00",
+            "time": "2022-02-12T23:43:59+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -435,8 +435,8 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v9.0.0",
-            "version_normalized": "9.0.0.0",
+            "version": "v9.1.0",
+            "version_normalized": "9.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",

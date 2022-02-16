@@ -16,9 +16,6 @@ function applyRouting($url){
     });
 
     // định nghĩa url trong này
-    $router->get('/', function(){
-        return "Hello poly";
-    });
 
     $router->get('login', [LoginController::class, 'loginForm']);
     $router->post('login', [LoginController::class, 'postLogin']);
@@ -33,9 +30,11 @@ function applyRouting($url){
         $router->get('/', [SubjectController::class, 'index'], ['before' => 'check-login']);
         $router->get('tao-moi', [SubjectController::class, 'addForm']);
         $router->post('tao-moi', [SubjectController::class, 'saveAdd']);
+        $router->get('cap-nhat/{id}', [SubjectController::class, 'editForm']);
+        $router->post('cap-nhat/{id}', [SubjectController::class, 'saveEdit']);
         $router->get('{subjectId}/cap-nhat', 
             [SubjectController::class, 'editForm']);
-        $router->get('xoa/{id}', [LoginController::class, 'remove']);
+        $router->get('xoa/{id}', [SubjectController::class, 'remove']);
         // tham số {}
         // 2 loại 
         // - tham số bắt buộc : {id}

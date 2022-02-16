@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
-class Answer extends BaseModel{
-    protected $tableName = 'answers';
+use Illuminate\Database\Eloquent\Model;
+class Answer extends Model{
+    protected $table = 'answers';
+    public $timestamps = false;
 }
 ?>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
-class Role extends BaseModel{
-    protected $tableName = 'roles';
+use Illuminate\Database\Eloquent\Model;
+class Role extends Model{
+    protected $table = 'roles';
+    public $timestamps = false;
 }
 ?>

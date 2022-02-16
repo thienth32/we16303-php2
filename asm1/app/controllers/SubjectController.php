@@ -15,24 +15,34 @@ class SubjectController{
     }
 
     public function saveAdd(){
+        // $newModel = Subject::create($_POST);
+        // var_dump($newModel);die;
         $model = new Subject();
-        $data = [
-            'name' => $_POST['name']
-        ];
-        $model->insert($data);
+        $model->name = $_POST['name'];
+        $model->save();
         header('location: ' . BASE_URL . 'mon-hoc');
         die;
     }
 
-    public function remove(){
-        $id = $_GET['id'];
+    public function editForm($id){
+        $model = Subject::find($id);
+        include_once "./app/views/mon-hoc/edit-form.php";
+    }
+
+    public function saveEdit($id){
+        $model = Subject::find($id);
+        $model->name = $_POST['name'];
+        $model->save();
+        header('location: ' . BASE_URL . 'mon-hoc');
+        die;
+    }
+
+    public function remove($id){
+        
         Subject::destroy($id);
         header('location: ' . BASE_URL . 'mon-hoc');
         die;
     }
 
-    public function editForm($subjectId){
-        var_dump($subjectId);die;
-    }
 }
 ?>

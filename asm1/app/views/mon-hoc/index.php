@@ -12,8 +12,8 @@
                 <td><?= $sub->id ?></td>
                 <td><?= $sub->name ?></td>
                 <td>
-                    <a href="<?= BASE_URL . 'mon-hoc/cap-nhat?id=' . $sub->id ?>">Sửa</a>
-                    <a href="<?= BASE_URL . 'mon-hoc/xoa?id=' . $sub->id ?>">Xóa</a>
+                    <a href="<?= BASE_URL . 'mon-hoc/cap-nhat/' . $sub->id ?>">Sửa</a>
+                    <a href="<?= BASE_URL . 'mon-hoc/xoa/' . $sub->id ?>">Xóa</a>
                 </td>
             </tr>
         <?php endforeach ?>

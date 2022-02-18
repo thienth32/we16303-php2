@@ -7,7 +7,10 @@ class SubjectController{
     public function index(){
         $subjects = Subject::all();
 
-        include_once "./app/views/mon-hoc/index.php";
+        // include_once "./app/views/mon-hoc/index.php";
+        return view('mon-hoc.index', [
+            'subjects' => $subjects
+        ]);
     }
 
     public function addForm(){

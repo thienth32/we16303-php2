@@ -24,6 +24,10 @@ class ComposerStaticInit16faabe01965741e67c41572026589ab
         array (
             'voku\\' => 5,
         ),
+        'e' => 
+        array (
+            'eftec\\bladeone\\' => 15,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -71,6 +75,10 @@ class ComposerStaticInit16faabe01965741e67c41572026589ab
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'eftec\\bladeone\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/eftec/bladeone/lib',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (

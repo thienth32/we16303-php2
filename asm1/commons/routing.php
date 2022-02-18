@@ -8,6 +8,10 @@ use Phroute\Phroute\RouteCollector;
 function applyRouting($url){
     $router = new RouteCollector();
 
+    $router->get('test-layout', function(){
+        return view('layouts.main');
+    });
+
     $router->filter('check-login', function(){
         if(!isset($_SESSION['auth']) || empty($_SESSION['auth'])){
             header('location: '. BASE_URL . 'login');

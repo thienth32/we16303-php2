@@ -14,12 +14,10 @@ class SubjectController{
     }
 
     public function addForm(){
-        include_once "./app/views/mon-hoc/add-form.php";
+        return view('mon-hoc.add-form');
     }
 
     public function saveAdd(){
-        // $newModel = Subject::create($_POST);
-        // var_dump($newModel);die;
         $model = new Subject();
         $model->name = $_POST['name'];
         $model->save();
@@ -29,7 +27,9 @@ class SubjectController{
 
     public function editForm($id){
         $model = Subject::find($id);
-        include_once "./app/views/mon-hoc/edit-form.php";
+        return view('mon-hoc.edit-form', [
+            'model' => $model
+        ]);
     }
 
     public function saveEdit($id){

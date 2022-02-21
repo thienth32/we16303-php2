@@ -3,7 +3,7 @@ namespace App\Controllers;
 class LoginController{
     
     public function loginForm(){
-        include_once './app/views/auth/login-form.php';
+        return view('auth.login-form');
     }
 
     public function postLogin(){

@@ -19,11 +19,14 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Admin</b>LTE</a>
+      <a href="#" class="h1"><b>FPT</b>Polytechnic</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
+        @if(isset($_GET['msg']))
+    <p class="login-box-msg text-danger">{{$_GET['msg']}}</p>
+        @else
+        <p class="login-box-msg">Sign in to start your session</p>
+        @endif
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">

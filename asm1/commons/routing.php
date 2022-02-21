@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\LoginController;
+use App\Controllers\QuizController;
 use App\Controllers\SubjectController;
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
@@ -8,12 +9,16 @@ use Phroute\Phroute\RouteCollector;
 function applyRouting($url){
     $router = new RouteCollector();
 
-    $router->get('test-layout', function(){
-        return view('layouts.main');
+    $router->get('login', [LoginController::class, 'loginForm']);
+    $router->post('login', [LoginController::class, 'postLogin']);
+    $router->any('logout', function (){
+        unset($_SESSION[AUTH]);
+        header('location: ' . BASE_URL . 'login');
+        die;
     });
 
     $router->filter('check-login', function(){
-        if(!isset($_SESSION['auth']) || empty($_SESSION['auth'])){
+        if(!isset($_SESSION[AUTH]) || empty($_SESSION[AUTH])){
             header('location: '. BASE_URL . 'login');
             die;
         }
@@ -21,30 +26,27 @@ function applyRouting($url){
 
     // định nghĩa url trong này
 
-    $router->get('login', [LoginController::class, 'loginForm']);
-    $router->post('login', [LoginController::class, 'postLogin']);
-    $router->any('logout', function (){
-        unset($_SESSION['auth']);
-        header('location: ' . BASE_URL . 'login');
-        die;
-    });
+    $router->group(['prefix' => 'admin', 'before' => 'check-login'], function($router){
+        $router->group(['prefix' => 'mon-hoc'], function($router){
+            $router->get('/', [SubjectController::class, 'index']);
+            $router->get('tao-moi', [SubjectController::class, 'addForm']);
+            $router->post('tao-moi', [SubjectController::class, 'saveAdd']);
+            $router->get('cap-nhat/{id}', [SubjectController::class, 'editForm']);
+            $router->post('cap-nhat/{id}', [SubjectController::class, 'saveEdit']);
+            $router->get('xoa/{id}', [SubjectController::class, 'remove']);
+        });
+        $router->group(['prefix' => 'quiz'], function($router){
+            $router->get('/', [QuizController::class, 'index']);
+            // $router->get('tao-moi', [SubjectController::class, 'addForm']);
+            // $router->post('tao-moi', [SubjectController::class, 'saveAdd']);
+            // $router->get('cap-nhat/{id}', [SubjectController::class, 'editForm']);
+            // $router->post('cap-nhat/{id}', [SubjectController::class, 'saveEdit']);
+            // $router->get('xoa/{id}', [SubjectController::class, 'remove']);
+        });
+    });  
 
 
-    $router->group(['prefix' => 'mon-hoc'], function($router){
-        $router->get('/', [SubjectController::class, 'index'], ['before' => 'check-login']);
-        $router->get('tao-moi', [SubjectController::class, 'addForm']);
-        $router->post('tao-moi', [SubjectController::class, 'saveAdd']);
-        $router->get('cap-nhat/{id}', [SubjectController::class, 'editForm']);
-        $router->post('cap-nhat/{id}', [SubjectController::class, 'saveEdit']);
-        $router->get('{subjectId}/cap-nhat', 
-            [SubjectController::class, 'editForm']);
-        $router->get('xoa/{id}', [SubjectController::class, 'remove']);
-        // tham số {}
-        // 2 loại 
-        // - tham số bắt buộc : {id}
-        // - tham số tuỳ chọn : {id}?
-        // $router->get('cap-nhat/{id}/{name}?', [SubjectController::class, 'editForm']);
-    });
+    
     
 
 

@@ -14,7 +14,7 @@ class LoginController{
         if($user && password_verify($password, $user->password)){
             $sessuser = $user->toArray();
             unset($sessuser['password']);
-            $_SESSION = $sessuser;
+            $_SESSION[AUTH] = $sessuser;
             header('location: ' . BASE_URL . 'admin/dashboard');
             die;
         }

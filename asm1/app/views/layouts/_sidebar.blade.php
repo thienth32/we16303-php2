@@ -42,13 +42,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{BASE_URL . 'mon-hoc'}}" class="nav-link">
+              <a href="{{BASE_URL . 'admin/mon-hoc'}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{BASE_URL . 'mon-hoc/tao-moi'}}" class="nav-link">
+              <a href="{{BASE_URL . 'admin/mon-hoc/tao-moi'}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm mới</p>
               </a>
@@ -65,13 +65,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{BASE_URL . 'mon-hoc'}}" class="nav-link">
+              <a href="{{BASE_URL . 'admin/quiz'}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Danh sách</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{BASE_URL . 'mon-hoc/tao-moi'}}" class="nav-link">
+              <a href="{{BASE_URL . 'admin/quiz/tao-moi'}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm mới</p>
               </a>

@@ -37,9 +37,15 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$q->name}}</td>
-                                    <td>{{$q->subject_id}}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$q->subject->name}}</td>
+                                    <td>{{count($q->questions)}}</td>
+                                    <td>
+                                        @php
+                                            $avgScore = $q->getAvgScore();
+                                            $avgScore = $avgScore != null ? round($avgScore, 2) : 0;
+                                        @endphp
+                                        {{$avgScore}}
+                                    </td>
                                     <td>
                                         <a href="" class="btn btn-primary">Sửa</a>
                                         <a href="" class="btn btn-danger">Xóa</a>

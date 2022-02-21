@@ -27,9 +27,7 @@
 <?php $this->stopSection(); ?>
 <?php $this->startSection('page-script'); ?>
 <script>
- $('a').click(function(){
- console.log(1);
- })
+ 
 </script>
 <?php $this->stopSection(); ?>
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.main'); } ?>
